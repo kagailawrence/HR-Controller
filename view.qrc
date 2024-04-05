@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/view">
+        <file alias="main.qml">main.qml</file>
+        <file alias="PerceptronIcons.qml">PerceptronIcons.qml</file>
+         <file alias="GridExample.qml">GridExample.qml</file>
+    </qresource>
+</RCC>

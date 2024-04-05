@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file alias="Clock.qml">clock/Clock.qml</file>
+        <file alias="HourNeedle.qml">clock/HourNeedle.qml</file>
+        <file alias="MinutesNeedle.qml">clock/MinutesNeedle.qml</file>
+        <file alias="SecondNeedle.qml">clock/SecondNeedle.qml</file>
+        <file>shapes.qml</file>
+    </qresource>
+</RCC>
