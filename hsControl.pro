@@ -7,6 +7,8 @@ INCLUDEPATH += .
 # Use the declarative module
 QT += quick
 
+CONFIG+=qml_debug
+
 # Build outside the source tree
 MOC_DIR = build/moc
 RCC_DIR = build/rcc

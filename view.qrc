@@ -2,6 +2,12 @@
     <qresource prefix="/view">
         <file alias="main.qml">main.qml</file>
         <file alias="PerceptronIcons.qml">PerceptronIcons.qml</file>
-         <file alias="GridExample.qml">GridExample.qml</file>
+        <file alias="GridExample.qml">GridExample.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="homeIcon.png">images/homeIcon.png</file>
+        <file alias="powerIcon.png">images/powerIcon.png</file>
+        <file alias="reportIcon.png">images/reportIcon.png</file>
+        <file alias="settingIcon.png">images/settingIcon.png</file>
     </qresource>
 </RCC>

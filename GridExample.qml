@@ -16,80 +16,122 @@ Window {
 
     Text {
         id: main_text
-        text:MyText.ui_Text
     }
-    GridView {
-        id: root
-        width: 320; height: 480
+    Rectangle {
+        width: 420
+        height: 420
         anchors.centerIn: parent
-        cellWidth: 150; cellHeight: 150
-        displaced: Transition {
-            NumberAnimation { properties: "x,y"; easing.type: Easing.OutQuad }
+        radius: 100
+        border {
+            width: 10
+            color: "black"
         }
-        model: DelegateModel {
-            id: visualModel
-            model: ListModel {
-                id: colorModel
-                ListElement { color: "blue"
-                    text:"Icon 1" }
-                ListElement { color: "green"
-                text:"Icon 2"}
-                ListElement { color: "red"
-                text:"Icon 3"}
-                ListElement { color: "yellow"
-                text:"Icon 4"}
+        GridView {
+            id: root
+            width: 400
+            height: 400
+            anchors.centerIn: parent
+            anchors.leftMargin: 100
+            cellWidth: 200
+            cellHeight: 200
+            displaced: Transition {
+                NumberAnimation {
+                    properties: "x,y"
+                    easing.type: Easing.OutQuad
+                }
             }
-            delegate: DropArea {
-                id: delegateRoot
-                width: 150; height: 150
-                onEntered: visualModel.items.move(drag.source.visualIndex, icon.visualIndex)
-                property int visualIndex: DelegateModel.itemsIndex
-                Binding { target: icon; property: "visualIndex"; value: visualIndex }
-               onPositionChanged: {
-//                       TestingTxt.ui_Text=model.text
-                   main_text.text=TestingTxt.dateTime()+" The icon causing the changes is "+model.text
-
-               }
-                Rectangle {
-                    id: icon
-                    property int visualIndex: 0
-                    width: 150; height: 150
-                    radius: 100
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter;
-                        verticalCenter: parent.verticalCenter
+            model: DelegateModel {
+                id: visualModel
+                model: ListModel {
+                    id: colorModel
+                    ListElement {
+                        color: "Yellow"
+                        text: "A"
+                        portrait: 'qrc:/images/homeIcon.png'
                     }
-
-                    color: parent.visualIndex==0 ? "grey" : model.color
-
-                    Text {
-                        anchors.centerIn: parent
-                        color: "white"
-                        text: model.text
+                    ListElement {
+                        color: "Yellow"
+                        text: "B"
+                        portrait: 'qrc:/images/powerIcon.png'
                     }
-                    DragHandler {
-                        id: dragHandler
+                    ListElement {
+                        color: "Yellow"
+                        text: "C"
+                        portrait: 'qrc:/images/reportIcon.png'
                     }
-                    Drag.active: dragHandler.active
-                    Drag.source: icon
-                    Drag.hotSpot.x: 36
-                    Drag.hotSpot.y: 36
-
-                    states: [
-                        State {
-                            when: icon.Drag.active
-                            ParentChange {
-                                target: icon
-                                parent: root
+                    ListElement {
+                        color: "yellow"
+                        text: "D"
+                        portrait: 'qrc:/images/settingIcon.png'
+                    }
+                }
+                delegate: DropArea {
+                    id: delegateRoot
+                    width: 190
+                    height: 190
+                    onEntered: visualModel.items.move(drag.source.visualIndex,
+                                                      icon.visualIndex)
+                    property int visualIndex: DelegateModel.itemsIndex
+                    Binding {
+                        target: icon
+                        property: "visualIndex"
+                        value: visualIndex
+                    }
+                    onPositionChanged: {
+                        main_text.text = " The icon causing the changes is " + model.text
+                    }
+                    Rectangle {
+                        width: parent.width
+                        height: parent.height
+                        color: icon.visualIndex === 0 ? "green" : 'gray'
+                        radius: 100
+                        Rectangle {
+                            id: icon
+                            property int visualIndex: 0
+                            width: 180
+                            height: 180
+                            radius: 100
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
                             }
 
-                            AnchorChanges {
-                                target: icon
-                                anchors.horizontalCenter: undefined
-                                anchors.verticalCenter: undefined
+                            color: parent.parent.visualIndex == 0 ? "red" : 'yellow'
+                            Text {
+                                anchors.centerIn: parent
+                                color: "black"
+                                text: model.text
                             }
+                            Image {
+                                id: name
+                                width: parent.width - 50
+                                height: parent.height - 50
+                                source: portrait
+                                anchors.centerIn: parent
+                            }
+                            DragHandler {
+                                id: dragHandler
+                            }
+                            Drag.active: dragHandler.active
+                            Drag.source: icon
+                            Drag.hotSpot.x: 36
+                            Drag.hotSpot.y: 36
+                            states: [
+                                State {
+                                    when: icon.Drag.active
+                                    ParentChange {
+                                        target: icon
+                                        parent: root
+                                    }
+                                    AnchorChanges {
+                                        target: icon
+                                        anchors.horizontalCenter: undefined
+                                        anchors.verticalCenter: undefined
+                                    }
+                                }
+                            ]
                         }
-                    ]
+                    }
                 }
             }
         }

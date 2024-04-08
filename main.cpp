@@ -1,4 +1,4 @@
-//#include <QtGui>
+#include <QtGui>
 #include <QtQml>
 #include <QQmlContext>
 #include "testingtxt.h"

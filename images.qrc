@@ -1,0 +1,9 @@
+<!DOCTYPE RCC>
+<RCC version="1.0"/>
+<qresource prefix="/">
+    <file>images.qrc</file>
+    <file>images/homeIcon.png</file>
+    <file>images/powerIcon.png</file>
+    <file>images/reportIcon.png</file>
+    <file>images/settingIcon.png</file>
+</qresource>
